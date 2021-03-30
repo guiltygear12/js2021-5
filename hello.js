@@ -21,3 +21,4 @@ console.log(date.getDay());  //요일, 날짜가 아님 0=일요일 1=월요일 
 console.log(date.getHours());
 console.log(date.getMinutes());
 console.log(date.getSeconds());
+
