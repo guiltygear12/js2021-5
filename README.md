@@ -160,7 +160,7 @@ for (let 요소 of 배열){
 |\ooo|8진수 ooo문자 코드로표기할수있는문자(o은 0~7까지의 숫자)|
 |\xhh|16진수 hh문자코드로 표기하는문자(h는 0~9까지의 숫자)|
 
-![이스케이프문자](./picture/escape.PNG)
+<!-- ![이스케이프문자](./picture/escape.PNG) -->
 
 #### 문자열 연결 연산자
 >문자열 연결 연산자(+)로 문자열을 연결할수있습니다.
@@ -190,13 +190,29 @@ console.log("안녕하세요"[4]);
 
 #### 비교 연산자
 
-![비교 연산자](./picture/BiGyo.PNG)
+<!-- ![비교 연산자](./picture/BiGyo.PNG) -->
+
+| 수 식 | 연 산 결 과 |
+|:--|--|
+| x > y |x가 y보다 클때 ture 나머지 false|
+| x < y |x가 y보다 작을때 ture 나머지 false|
+| x >= y|x가 y보다 크거나 같을때 ture 나머지 false|
+| x <= y|x가 y보다 작거나 같을때 ture 나머지 false|
+| x == y|x와 y가 같을때 ture 나머지 false|
+| x != y|x와 y가 같지않을때 ture 나머지 false|
 
 >예시 console.log(50 > 300); -> false
 
 #### 논리 연산자
 
-![논리 연산자](./picture/NonLi.png)
+<!-- ![논리 연산자](./picture/NonLi.png) -->
+
+|연산자|사용 예|설명|
+|:--|--|--|
+| &&    | A && B    | and연산, A와B 모두 참일때만 참이다.   |
+| \|\|  | A \|\| B  | OR연산, A 혹은 B 둘중 하나만 참이어도 참이다.  |
+| !     | !A        | NOR연산, A가 참이면 거짓 , 거짓이면 참이된다.  |
+
 
 >예시 console.log(!true); -> false
 >논리 합연산자(||) 혹은 논리 곱 연산자(&&)를 사용하는 경우가 꽤 많은 편인데 주의할점으로는 범위에 대한 판단인데 예를 들어 [ 30 > 20 > 10 ] 이런 식으로 만든다면 false라고 반환이 된다 이유는 컴퓨터는 왼쪽부터 우선순위를 두어 30 > 20 을 true값으로 변환 하고 true는 1로 변환 1>10은 false이기에 정답은 false를 내어주게 됩니다
@@ -219,16 +235,28 @@ let 변수이름 (변수 를 선언합니다)
 
 
 
-![복합 대입 연산자](./picture/mix.PNG)
+<!-- ![복합 대입 연산자](./picture/mix.PNG) -->
 
-
+|연산자|설명|
+|--|--|
+|+=|기존 변수의 값에 값을 더합니다.|
+|-=|기존 변수의 값에 값을 빼줍니다.|
+|*=|기존 변수의 값에 값을 곱해줍니다.|
+|/=|기존 변수의 값에 값을 나눠줍니다.|
+|%=|기존 변수의 값에 나머지를 구해줍니다.|
 
 ### 6. 증감 연산자
 >변수에 적용이 가능한 연산자로 전위 혹은 후위에 붙여서 가능하며 전위와 후위에 차이에 주의를 하며 사용하여야됩니다.
 
 
 
-![증감 연산자](./picture/jungam.PNG)
+<!-- ![증감 연산자](./picture/jungam.PNG) -->
+|증감 연산자|설명|
+|--|--|
+|++X|먼저 피연산자의 값을 1 감소 후에 연산진행|
+|X++|먼저 해당연산 진행후 피 연산자의 값을 1 감소|
+|--X|먼저 피연산자의 값을 1 감소 후에 연산진행|
+|X--|먼저 해당연산 진행후 피 연산자의 값을 1 감소|
 
 
 ### 7. 자료형 검사
@@ -298,7 +326,7 @@ NaN 을 확인할때에는 isNaN() 을 사용합니다
 if ( 조건식 ) { 조건에 해당할때 시행되는 코드 }
 
 
-![if 조건문](./picture/if01.PNG)
+![if 조건문](./picture/if.jpg)
 
 
 ### 2. if-else 조건문
@@ -311,14 +339,10 @@ if ( 조건식 ) {
 }
 
 
-
-
-![if else 조건문](./picture/if_else.PNG)
-
-
-
+![if else 조건문](./picture/if_else.jpg)
 
 <hr/>
+
 ## ~~~~~  [ 03월 16일 ]  ~~~~~
 ### 2 자바 스크립트로 할 수 있는 일
 >자바 스크립트 초기에는 웹 클라이언트 개발에만 이용이 가능하였음<br /> 
@@ -387,7 +411,21 @@ console.log("hello world...!"); <- ; 반드시
 
 #### 1.2 키워드 
 키워드는 특별한 의미가 부여된 단어로 자바스크립트를 처음 개발하던때에 정한 단어 입니다 해당 단어로 식별자를 만드는 것은 불가능합니다.
-![자바스크립트_키워드](./picture/js_keyword.png)
+<!-- ![자바스크립트_키워드](./picture/js_keyword.png) -->
+||||||
+|--|--|--|--|--|--|
+|abstract|arguments|await*|boolean|break|byte|
+|case|catch|char|class*|const|continue|
+|debugger|default|delete|do|double|else|
+|enum*|eval|export*|extends*|false|final|
+|finally|float|for|function|goto|if|
+|implements|import*|in|instanceof|int|interface|
+|let*|long|native|new|null|package|
+|private|protected|public|return|short|static|
+|super*|switch|synchronized|this|throw|throws|
+|transient|ture|try|typeof|var|void|
+|volatile|while|with|yield||
+*표시가된 단어는 ECMAScript 5,6 에서 추가된 단어입니다.
 
 #### 1.3 식별자
 >변수,함수등에 임의로 붙이는 이름입니다,단 다음과 같은 규칙에 따릅니다
@@ -411,10 +449,16 @@ console.log("hello world...!"); <- ; 반드시
 >프로그램 진행에 전혀 영향을 주지않는 코드로 프로그램을 설명할때 주로 사용됩니다
 
 >주석처리방법
-한줄 주석
-![한줄_주석](./picture/1line_ju.PNG)
-두줄이상 주석
-![두줄이상_주석](./picture/multi_line_ju.PNG)
+<pre>
+    <code>
+        // single line comment (한줄 주석을 필요러 할때 //을 사용)
+
+        /*
+            comment 1   (두줄 이상의 주석을 필요로 할때)
+            comment 2   (/**/안에 내용을 넣어서 사용)
+        */
+    </code>
+</pre>
 
 #### 2 출력
 
