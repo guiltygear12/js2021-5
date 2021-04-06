@@ -8,31 +8,57 @@ for(let i in foo){
 
 
 
-for(let item of foo){
-    console.log(item)
-}
+// for(let item of foo){
+//     console.log(item)
+// }
 
-let output = "";
+// let output = "";
 
-for(let i = 0; i < 10 ; i++ ){
-    for(let j = 0 ;  j < i ; j++ ){
-        output += '*';
-    }
-    output +='\n';
-}
-console.log(output);
+// for(let i = 0; i < 10 ; i++ ){
+//     for(let j = 0 ;  j < i ; j++ ){
+//         output += '*';
+//     }
+//     output +='\n';
+// }
+// console.log(output);
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 let star = "";
 
 for(let a=0;a<10;a++){
+    //10-a보다 작은수많큼 띄어쓰기
     for(let b = 0 ; b < 10 - a ; b++){
         star +=' ';
     }
+    // 
     for(let b = 0 ; b < a + 1 ; b++){
+        star +='*';
+    }
+    for(let b = 1 ; b < a + 1 ; b++){
         star +='*';
     }
     star += '\n';
 }
 console.log(star);
+
+let s = "";
+
+for(let a = 0 ; a < 10 ; a++){
+    //10-a보다 작은수많큼 띄어쓰기
+    for(let b = 0 ; b < a + 1 ; b++ ){
+        s +=' ';
+    }
+    
+    for(let b = 0 ; b < 10 - a ; b++){
+        s +='*';
+    }
+
+    for(let b = 0 ; b < 10 - a ; b++){
+        star +='*';
+    }
+    s += '\n';
+}
+console.log(s);
+
+
