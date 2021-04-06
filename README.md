@@ -1,6 +1,56 @@
 #   박민형   [201840212]
 <hr/>
 
+## ~~~~~[ 04월 06일 ] ~~~~~
+
+### 6. 중첩 반복문
+>반복문을 여러번 중첩하여 사용하면 중첩 반복문이라고 합니다.
+
+<pre>
+<code>
+// 별 피라미드 예제 1번
+let output = "";
+
+for(let i = 0; i < 10 ; i++ ){
+    for(let j = 0 ;  j < i ; j++ ){
+        output += '*';
+    }
+    output +='\n';
+}
+console.log(output);
+</code>
+</pre>
+<pre>
+<code>
+// 별 피라미드 예제 2번
+let star = "";
+
+for(let a = 0 ;a < 10 ; a++ ){
+    for(let b = 0 ; b < 10 - a ; b++ ){
+        star +=' ';
+    }
+    for(let b = 0 ; b < a + 1 ; b++ ){
+        star +='*';
+    }
+    star += '\n';
+}
+console.log(star);
+</code>
+</pre>
+
+
+### 7. break 키워드
+
+### 8. continue 키워드
+
+### 9. 조금더 나아가기
+
+#### 9.1 스코프
+
+#### 9.2 호이스트
+
+<hr/>
+
 ## ~~~~~ [ 03월 30일 ] ~~~~~
 
 ### 3. 중첩 조건문
@@ -118,12 +168,24 @@ for (let i = 0;i >=0 ; i--){
 
 let 배열 = [~~ 배열 내용 ~~]
 for (let 인덱스 in 배열){
-    index 값이 필요할때
+    index 값도 필요할때
 }
 
 for (let 요소 of 배열){
     단순하게 배열내부에 값들만 필요할때
 }
+
+let foo=[10,20,30,40,50];
+
+
+//for in 예제
+
+for(let i in foo){
+    console.log( `${i}번째 요소: ${foo[i]}이다.`)
+}
+
+//${i}-> 인덱스값출력   ${foo[i]}-> 배열에 담겨져있는 결과값출력.
+
 </code>
 
 
