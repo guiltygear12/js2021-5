@@ -76,18 +76,16 @@
 </code>
 </pre>
 
+
 ### 2. 함수의 기본형태
+#### 2.1 함수의 기본형태 예제
 <pre>
     <code>
     function <함수이름>(<매개변수>){
         <함수코드>
         return <리턴값> <!-- 리턴값은 코드에따라서 없을수도있음 -->
     }
-    </code>
-</pre>
 
-<pre>
-    <code>
     function power(x){
         return x * x;
     }
@@ -96,8 +94,64 @@
     </code>
 </pre>
 
+#### 2.2 매개 변수가 여러 개인 함수
+
+<pre>
+<code>
+function multiply(x,y){
+    return x * y
+}
+console.log(multiply(52,273));
+console.log(multiply(103,32));
+</code>
+</pre>
+
+#### 2.3 리턴이 없는 함수
+
+<pre>
+<code>
+function print(message){
+    console.log(`"$(message)"(이)라고 말했습니다!`)
+}
+print("안녕하세요");
+print("뿌잉뿌잉")
+</code>
+</pre>
+
+
+### 3. 함수의 기본 활용 형태
+>리턴하는 함수의 기본 형태
+
+<pre>
+<code>
+function (매개변수,매개변수){
+    let output = 초기값;
+    // output 계산~~
+    reutrn output;
+}
+<code>
+</pre>
+
+### 4. 함수 매개 변수 초기화
+>매개변수를 입력하지않고 함수를 호출
+>-> 실행하면 undifined 가 출력됩니다.
+
+<pre>
+<code>
+function print(name,count){
+    console.log(`$(name)이/가 $(count)개 있습니다.`)
+}
+print("사과", 10);
+print("사과");
+</code>
+</pre>
+
+### 5.콜백 함수
+>함수의 매개변수로 전달되는 함수
+
 
 <hr/>
+
 ## ~~~~~[ 04월 06일 ] ~~~~~
 
 ### 6. 중첩 반복문
