@@ -1,6 +1,240 @@
 #   박민형   [201840212]
 <hr/>
 
+## ~~~~~ [ 04월 27일 ] ~~~~~
+
+### 7 조금더 나아가기
+#### 7.1 익명함수와 선언적 함수의 생성 순서
+
+>실질적으로는 이름의 존재유무 이외에는 큰 차이가없음
+차이점은 <b>생성 순서</b>이다 예제코드를 보면
+
+<pre>
+<code>
+let 변수;
+
+변수=10;
+변수=20;
+
+console.log(변수);
+</code>
+> 20
+</pre>
+>동일 이름으로 변수를 선언했으므로 뒤에 선언한 변수가 덮어쓰기를 하여 20을 출력한다.
+
+>함수도 동일 하게 덮어쓰여진다.
+
+<pre>
+<code>
+let 함수;
+함수 = function(){console.log("1 번째 함수);};
+함수 = function(){console.log("2 번째 함수);};\
+함수();
+</code>
+>2 번째 함수
+</pre>
+
+>단, 선언적 함수는 조금 다르게 작동한다
+
+<pre>
+<code>
+함수 = function() {console.log("1 번째 함수);};
+function 함수() {console.log("2 번째 함수");};
+함수();
+</code>
+>1 번째 함수
+</pre>
+>선언적함수가 먼저 실행후 익명함수가 만들어지며 덮어쓰게 되어 1번째가 출력된다.
+
+
+#### 7.2 익명함수와 화살표 함수의 차이
+>funtion(){} 형태로 선언하는 익명함수와 ()=>{}형태로 선언하는 화살표함수는 거의 비슷한기능을 수행한다.
+하지만 다른 차이는 'this' 키워드의 의미가 다르다.
+
+<pre>
+익명함수 생성후 곧바로 출력
+<code>
+(funtion(){
+    console.log(this);
+})();
+</code>
+오류 발생
+</pre>
+>이러한 함수내부의 this 키워드는 자바스크립트 최상위 객체,외부에 강제연결된 객체를 표시합니다.
+
+<pre>
+화살표함수 생성후 곧바로 출력
+<code>
+
+(()=>{
+    console.log(this);
+})();
+</code>
+> {}
+</pre>
+>화살표함수의 this는 '자기자신과 관련된 것'만 나타냅니다.
+
+
+
+## 6장 객체
+
+### 1.객체 기본
+객체는 여러개의 자료형을 저장하는 자료형입니다. 배열과 유사합니다.
+
+<pre>
+배열 선언
+<code>
+let array=["토끼","고양이","개","다람쥐"];
+</code>
+</pre>
+
+<pre>
+인덱스
+<code>
+array[0]  >  '토끼'
+array[3]  >  '다람쥐'
+</code>
+</pre>
+
+|인덱스|요소|
+|--|--|
+|0|토끼|
+|1|고양이|
+|2|개|
+|3|다람쥐|
+
+>배열의 인덱스와 요소는 위의 표와 같습니다.
+배열에서는 인덱스로 접근한다면 객체는 키 값으로 접근합니다
+
+객체 선언
+
+<pre>
+객체의 선언
+<code>
+let product = {
+    이름: 'galaxy a90 5G',
+    apu : 'snapdragon 855',
+    스토리지: '128/256 G'
+}
+console.log(product);
+</code>
+>{
+    이름: 'galaxy a90 5G',
+    apu : 'snapdragon 855',
+    스토리지: '128/256 G'
+}
+</pre>
+
+객체의 키,속성은 다음과 같다
+|키|속성|
+|--|--|
+|이름|galaxy a90 5G|
+|apu|snapdragon 855|
+|스토리지|128/256 G|
+
+키값을 이용해서 접근하는 방식은 다음과 같다
+
+<pre>
+<code>
+product['이름']
+product.이름
+</code>
+>galaxy a90 5G
+>galaxy a90 5G
+</pre>
+>2가지가 있으며 후자의 방법을 선호한다고한다
+
+### 2.객체와 반복문
+for in 반복문을 배열에 사용시 변수에 인덱스값을 넣을수 있던것 처럼 객체에 사용시 키가 들어가게된다
+<pre>
+<code>
+let product = {
+    이름: 'galaxy a90 5G',
+    apu : 'snapdragon 855',
+    스토리지: '128/256 G'
+}
+for (let foo in product){
+    console.log(`${foo}: ${product[foo]}`)
+}
+</code>
+>   이름: galaxy a90 5G
+    apu : snapdragon 855
+    스토리지: 128/256 G
+</pre>
+
+### 3. 속성과 메소드
+배열 내부의 값 하나를 요소 라고 하며 객체 내부의 값은 속성이라 부릅니다, 배열과 마찬가지로 다양한 자료형을 사용할수있습니다
+
+만약 객체 속성중 함수인 자료형이 있다면 그 속성을 메소드 라고 부릅니다.
+
+<u>자신의 속성을 메소드에서 사용시에는 반드시 <b>this</b>키워드를 사용해야됩니다.</u>
+
+### 4. 생성자 함수와 프로토 타입
+#### 4.1 개요
+>배열과 객체를 사용하여 여러개의 데이터를 쉽게 다룰수있습니다.
+
+<pre>
+<code>
+let products={
+    {name=Galaxy_a72,price=700000},
+    {name=Galaxy_a52,price=590000},
+    {name=Galaxy_a42,price=490000},
+    {name=Galaxy_a32,price=390000},
+}
+</code>
+</pre>
+
+<pre>
+메소드를 가지는 객체의 배열
+<code>
+let products = [
+    {name:'S21 ULTRA',price:'1,390,000원',
+        print:function(){
+            console.log(`기종: ${this.name} 가격: ${this.price}`);
+        }
+    },
+    {name:'S21 PLUS',price:'1,190,000원',
+        print:function(){
+            console.log(`기종: ${this.name} 가격: ${this.price}`);
+        }
+    },
+    {name:'S21',price:'990,000원',
+        print:function(){
+            console.log(`기종: ${this.name} 가격: ${this.price}`);
+        }
+    }
+]
+for(let product of products){
+    product.print();
+}
+</code>
+</pre>
+
+>함수의 형태로 만들어 코드를 줄일수도있지만 될수있으면 객체지향 프로그래밍의 특성을 살려서 위와같은 코딩을 하는것이 바람직하다.
+
+#### 4.2 생성자 함수
+> 객체를 만드는함수 입니다 다음과 같이 생성하고 객체를 생성하며  다른 함수와 차이를 두기위해 대문자로 시작하는것이 바람직합니다.
+
+<pre>
+<code>
+//생성자 함수
+function Product(name,price){
+    this.name = name;
+    this.price = price;
+}
+// 객체 생성
+let product = new Product("바나나",1200);
+//출력
+console.log(product);
+</code>
+>product{name:바나나,price:1200}
+</pre>
+
+
+
+<hr/>
+중간고사 범위 끝
+
 ## ~~~~~[ 04월 13일 ] ~~~~~
 
 ## 5장 함수
