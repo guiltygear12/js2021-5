@@ -1,6 +1,187 @@
 #   박민형   [201840212]
 <hr/>
 
+## ~~~~~ [ 05월 04일 ] ~~~~~
+
+#### 4.3 프로토타입
+>생성자 함수로 만들어진 객체는 프로토타입 이라는 공간에 메소드를 지정해서
+모든객체가 공유하도록 만들수있다.
+
+<pre>
+생성자 함수
+<code>
+function Product(name,price){
+    this.name = name;
+    this.price = price;
+}
+</code>
+프로토 타입에 메소드를 선언합니다.
+<code>
+Product.prototype.print = function(){
+    console.log(`${product.name}의 가격은 ${product.price}원 입니다.`);
+}
+</code>
+객체를 생성합니다.
+<code>
+let product = new Product("바나나",1200);
+</code>
+메소드를 호출합니다.
+<code>
+product.print();
+</code>
+</pre>
+
+>프로토타입 기반의 객체지향언어는 자유성이 높아서 적응에 어려움을 많다는 의견이 있어서 <b>ECMAScript6 부터는 클래스 기능을 추가해서 클래스기반과 프로토 타입 기반 둘다 개발이 가능</b>합니다
+
+
+## 5. 조금더 나아가기
+
+## 내용추가 바람
+
+
+# 7장 표준 내장 객체
+
+## 1. 기본 자료형과 객체 자료형의 차이
+
+<pre>
+<code>
+let number = 273;
+let string = '안녕하세요';
+let boolean = true;
+console.log(typeof number);
+console.log(typeof string);
+console.log(typeof boolean);
+</code>
+>   number
+    string
+    boolean
+
+    숫자 문자열 생성시 typeof를 사용하면 위와같은 결과값대신 object가 출력됩니다.
+<code>
+    let number = new Number(273);
+
+    console.log(typeof number);
+</code>
+>   object
+</pre>
+
+>속성과 메소드는 객체가 소유할수있다는건 알지만 기본 자료형도 메소드를 가지고 있다는 것입니다
+왜냐하면 <b> 기본자료형의 속성/메소드 를 사용시에 기본 자료형이 자동으로 객체로 전환 </b> 되기 때문입니다.
+
+>기본 자료형 숫자의 속성및 메소드를 사용시에 자동으로 Number 객체로 전환되어 사용됩니다 즉 둘의 차이을 느끼기 어렵습니다.
+차이점은 기본 자료형에는 속성및 메소드 추가가 불가능하다고 할수있습니다.
+
+단, 프로토타입 을 사용하여 메소드를 추가하는것은 가능합니다.
+
+
+## 2. Number 객체
+
+숫자를 표현할때 사용하는 객체
+#### 2.1 메소드
+
+Number 객체가 가지는 메소드의 종류
+|메소드|설명|
+|--|--|
+|toExponential()|숫자를 지수 표시로 나타낸 문자열을 리턴|
+|<b>toFixed()</b>|<b>숫자를 고정소수점 표시로 나타낸 문자열을 리턴</b>|
+|toPrecision()|숫자를 길이에따라 지수 표시 또는 고정소수점 표시로 나타낸 문자열을 리턴|
+
+3가지 모두 유사한 기능을 수행함으로 대표적인 toFixed()를 예시로 보면
+
+<code>
+let number = 123.123456789;
+
+console.log(number.toFixed(1));
+console.log(number.toFixed(4));
+</code>
+/>   123.1
+    123.1234
+
+    이렇게 나오게 됩니다.
+
+#### 2.2 생성자 함수의 속성
+Number 생성자함수 자체도 속성을 지닐수있습니다.
+
+<code>
+function Constructor(){}
+Constructor.property = 273;
+Constructor.method = function(){};
+
+console.log(Constructor.property);
+console.log(Constructor.method);
+</code>
+-> 
+273
+[function]
+
+###### Number 생성자 함수의 속성
+
+|속성|설명|
+|--|--|
+|MAX_VALUE|자바스크립트의 숫자가 나타내는 최대의 숫자|
+|MIN_VALUE|자바스크립트의 숫자가 나타내는 최소의 숫자|
+|NaN|자바 스크립트의 숫자로 표현 불가능한 숫자|
+|POSITIVE_INFINITY|양의 무한대 숫자|
+|NEGATIVE_INFINITY|음의 무한대 숫자|
+
+
+## 3. String 객체
+가장 사용빈도가 높은 내장객체입니다.
+생성방법은 두가지입니다.
+
+<CODE>
+
+let stringFromLiteral = '안녕하세요';
+
+let stringFromConstructor = new String('안녕하세요');
+</CODE>
+
+
+#### 3.1 속성과 메소드
+
+String 객체의 속성
+
+length - 문자열의 길이를 나타냅니다.
+
+문자수를 이용하는 프로그램은 많아 활용도가 높습니다.
+
+메소드는 매우 다양하게 있습니다.
+|메소드|설명|
+|--|--|
+|charAt(position)|position에 위치한 문자를 리턴|
+|charCodeAt(position)|position 에 위치한 문자의 유니코드 번호 리턴|
+|concat(args)|매개 변수로 입력한 문자열을 이어 리턴|
+|indexOf(searchString,position)|앞에서부터 일치하는 문자열의 위치 리턴|
+|lastindexOf(searchString,position)|뒤에서부터 일치하는 문자열의 위치 리턴|
+|match(regExp)|문자열 안에 regExp 가 존재하는지 확인|
+|replace(regExp,replacement)|regExp를 replacement로 변환후 리턴|
+|search(regExp)|regExp 와 일치하는 문자열의 위치 리턴|
+|slice(start,end)|특정 위치의 문자열을 추출후 리턴|
+|split(separator,limit)|separator로 문자열을 잘라서 리턴|
+|substr(start,count)|start 에서 count 만큼 잘라서 리턴|
+|substring(start,end)|start -> end 까지 잘라서 리턴|
+|toLowerCase()|문자열을 전부 소문자로 변경후 리턴|
+|toUpperCase()|문자열을 전부 대문자로 변경후 리턴|
+
+#### 3.2 메소드 활용
+
+>문자열은 굉장히 많이 사용된다 예시를 보자
+
+<code>
+
+let string = '안녕하세요. 좋은 아침입니다.';
+
+if (string.indexOf('아침')>=0){
+    console.log('좋은 아침이에요...!');
+}
+
+</code>
+
+위 코드에서 indexOf() 메소드는 매개변수로 받은 문자열이 어디에 위치하는지를 리턴합니다 만약 포함이 되지않는다면 -1 을 반환함으로 0보다 크다면 존재유무를 알수있습니다.
+
+
+
+
 ## ~~~~~ [ 04월 27일 ] ~~~~~
 
 ### 7 조금더 나아가기
