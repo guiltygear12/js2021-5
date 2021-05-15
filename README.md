@@ -40,7 +40,7 @@
 
 #### 6.1 프로토 타입에 메소드 추가
 프로토 타입에 메소드를 추가하면 해당 자료형 전체에 사용이 가능하게 추가가 가능합니다.
-
+<pre>
 <code>
 //프로토 타입에 메소드를 추가
 String.prototype.contain = funtion(input){
@@ -49,6 +49,7 @@ String.prototype.contain = funtion(input){
 //메소드 활용
 console.log('안녕하세요'.contain('안녕'));
 </code>
+</pre>
 
 #### 6.2 underscore.js 라이브러리
 
@@ -76,7 +77,7 @@ json객체의 메소드
 
 프로그램 실행중에 발생하는 문제를 <b>예외</b>라고 하며 이러한 문제를 해결하는것을 <b>예외 처리</b> 라고 합니다
 #### 2. try catch finally 구문을 사용한 고급 예외 처리
-
+<pre>
 <code>
     try{
         // 해당 부분에서 예외 발생시 catch 부분으로 이동합니다
@@ -86,6 +87,7 @@ json객체의 메소드
         // 무조건 적으로 실행되는 부분입니다
     }
 </code>
+</pre>
 
 
 ### 3. 예외를 강제로 발생시키는 경우
