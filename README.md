@@ -111,6 +111,70 @@ Url {
 |fs.readFileSync(filename, [options])|filename의 파일을 [options]의 방식으로 읽은 후 문자열을 반환합니다.(동기적)|
 |fs.writeFileSync(filename, data, [options])|filename의 파일에 [options]의 방식으로 data 내용을 씁니다.(동기적)|
 
+예제
+
+<pre>
+ readfile 예제
+<code>
+//main.js
+var fs = require('fs');
+ 
+
+// 비동기적 읽기
+fs.readFile('text.txt', 'utf8', function(err, data) {
+    console.log('비동기적 읽기 ' + data);
+});
+
+// 동기적 읽기
+var text = fs.readFileSync('text.txt', 'utf8');
+console.log('동기적 읽기 ' + text);
+</code>
+writefiel 예제
+<code>
+// main.js
+var fs = require('fs');
+ 
+var data = 'fs.writeFile test';
+ 
+fs.writeFile('text1.txt', data, 'utf8', function(err) {
+    console.log('비동기적 파일 쓰기 완료');
+});
+ 
+ 
+fs.writeFileSync('text2.txt', data, 'utf8');
+console.log('동기적 파일 쓰기 완료');
+</code>
+동기적 예외처리 예제
+<code>
+// main.js
+var fs = require('fs');
+ 
+// 파일 읽기(동기적)
+try {
+	var data = fs.readFileSync('notexist.txt', 'utf8'); // 파일이 없는데 읽으려 함
+	console.log(data);
+} catch (err) {
+    console.log(err);
+}
+</code>
+비동기적 예외처리 예제
+<code>
+// main.js
+var fs = require('fs');
+ 
+// 파일 읽기
+fs.readFile('notexist.txt', 'utf8', function(err, data) { // 존재하지 않는 파일 읽기
+    if (err) {
+        console.log(err); // 읽기 실패
+    }
+    else {
+        console.log(data); // 읽기 성공
+    }
+});
+</code>
+</pre>
+
+
 #### 비동기식 처리의 장점
 c++ 등 의 프로그래밍 언어를 사용한다면 더욱 빠른 프로그램을 만들수있지만 제대로 만들기는 매우 어려우며 유지보수에 큰 어려움이 있습니다.
 그리하여 많은 큰 기업에서는 c++로 개발을 하지않고 php 루비 자바 node.js등으로 개발을 하고있습니다.
