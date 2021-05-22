@@ -1,6 +1,187 @@
 #   박민형   [201840212]
 <hr>
 
+## ~~~~~ [ 05월 18일 ] ~~~~~
+
+## 9장 node.js 기본
+
+### 1. 전역 변수
+장소에 제약없이 사용이 가능한 것들을 전역 00 이라고 합니다
+전역 변수 , 전역 객체 , 전역 함수등...
+
+##### 문자열 자료형의 전역변수
+|||
+|--|--|
+|__filename|현재 실행중인 코드의 파일 경로를 나타냅니다|
+|__dirname|현재 실행중인 코드의 폴더 경로를 나타냅니다|
+### 2. process객체의 속성과 이벤트
+node.js가 제공하는 전역 객체입니다.
+>process 정보를 제공하며 제어를 돕는 객체입니다.
+
+process객체의 속성
+|속성|메소드|
+|--|--|
+|env|컴퓨터 환경 정보를 나타냅니다|
+|version|node.js 버전을 나타냅니다|
+|versions|node.js와 종속된 프로그램의버전을 나타냅니다|
+|arch|프로세서의 아키텍쳐를 나타냅니다|
+|platform|플랫폼을 나타냅니다|
+
+process 객체의 메소드
+|메소드|설명|
+|--|--|
+|exit([exitCode=0])|프로그램을 종료합니다.|
+|memoryUsage()|메모리 사용 정보 객체를 리턴합니다|
+|uptime()|현재 프로그램이 실행된 시간을 리턴합니다|
+
+### 3. process 객체와 이벤트 개요
+>자바 스크립트에서는 '이벤트' 요소를 많이 사용합니다.
+
+이벤트사용방법
+<code>
+on(<이벤트 이름>,<이벤트 헨들러>)
+</code>
+
+이벤트 헨들러는 리스너 라고도 하며 이벤트 발생시 호출될 함수를 의미합니다
+
+프로세스 객체의 이벤트
+|이벤트|설명|
+|--|--|
+|exit|프로세스가 종료될때 발생|
+|uncaughtExcoption|예외가 일어날때 발생|
+
+
+### 4. os 모듈
+
+os 모듈은 운영체제나 시스템의 정보를 확인하는 메소드가 다수 있는 모듈입니다.
+
+|||
+|--|--|
+|hostname()|운영체제의 호스트이름 리턴|
+|type()|운영체제의 이름을 리턴|
+|paltform()|운영체제의 플랫폼을 리턴|
+|arch()|운영체제의 아키텍쳐를 리턴|
+|release()|운영체제의 버전을 리턴|
+|uptime()|운영체제가 실행된 시간을 리턴|
+|loadavg()|로드 에버리지 정보를 담은 배열을 리턴|
+|totalmem()|시스템의 총 메모리를 리턴|
+|freemem()|시스템의 사용가능한 메모리를 리턴|
+|cpus()|cpu의 정보를 담은 객체를 리턴|
+|getNetworkInetfaces()|네트워크 인터페이스의 정보를 담은 배열을 리턴|
+
+
+
+
+### 5. url 모듈
+
+<pre>
+모듈을 추출합니다
+<code>
+const url = require('url');
+</code>
+모듈을 사용합니다
+<code>
+const parseObject = url.parse('https://naver.com');
+console.log(parseObject);
+</code>
+Url {
+  protocol: 'https:',
+  slashes: true,
+  auth: null,
+  host: 'naver.com',
+  port: null,
+  hostname: 'naver.com',
+  hash: null,
+  search: null,
+  query: null,
+  pathname: '/',
+  path: '/',
+  href: 'https://naver.com/'
+}
+</pre>
+
+### 6. File System 모듈
+
+파일 처리와 관련된 모듈
+
+|메소드|설명|
+|--|--|
+|fs.readFile(filename, [options], callback)|filename의 파일을 [options]의 방식으로 읽은 후 callback으로 전달된 함수를 호출합니다. (비동기적)|
+|fs.writeFile(filename, data, [options], callback)|filename의 파일에 [options]의 방식으로 data 내용을 쓴 후 callback 함수를 호출합니다.(비동기적) |
+|fs.readFileSync(filename, [options])|filename의 파일을 [options]의 방식으로 읽은 후 문자열을 반환합니다.(동기적)|
+|fs.writeFileSync(filename, data, [options])|filename의 파일에 [options]의 방식으로 data 내용을 씁니다.(동기적)|
+
+#### 비동기식 처리의 장점
+c++ 등 의 프로그래밍 언어를 사용한다면 더욱 빠른 프로그램을 만들수있지만 제대로 만들기는 매우 어려우며 유지보수에 큰 어려움이 있습니다.
+그리하여 많은 큰 기업에서는 c++로 개발을 하지않고 php 루비 자바 node.js등으로 개발을 하고있습니다.
+
+
+### 7. 노드 패키지 매니저
+과거의 프로그래밍언어들은 이러한 외부모듈을 설치하기가 어려웠습니다 하지만 현대의 언어들는 '패키지 매니저' 모듈 관리 프로그램을 사용해서 모듈을 쉽게 설치가 가능하다
+
+파이썬은 pip 루비는 gem
+node.js는 npm을 사용합니다
+
+예시
+npm install express(<- 설치하고싶은 모듈이름)
+
+
+
+
+### 8. request 모듈
+
+request 깃허브 링크
+: https://github.com/request/request
+
+<code>
+const url ='http://ncov.mohw.go.kr/';
+request(url,(error,response,body)=>{
+    const $ = cheerio.load(body);
+    console.log($("ul.suminfo>li>span.num").text());
+});
+
+</code>
+> 네이버 홈페이지의 html 내용이 출력되게 된다.
+
+
+
+### 9. cheerio
+
+cheerio 링크
+: https://github.com/cheeriojs/cheerio
+
+예제
+<pre>
+
+<code>
+//모듈 추출
+const request = require("request");
+const cheerio = require("cheerio");
+
+//request 모듈 사용
+const url ='http://hanbit.co.kr/store/books/new_book_list.html';
+request(url,(error,response,body)=>{
+    const $ = cheerio.load(body);
+
+    //데이터 추출
+    $('.view_box').each((index,element)=>{
+        //변수선언
+        const title = $(element).find('_book_tit').text().trim();
+        let writer = $(element).find('_book_writer').text().trim();
+        writer = writer.split(',').map((item)=>item.trim());
+        //출력
+        console.log(title);
+        console.log(writer);
+        console.log();
+    })
+});
+<code>
+
+</pre>
+
+
+<hr>
+
 ## ~~~~~ [ 05월 11일 ] ~~~~~
 
 ## 4. Date 객체
