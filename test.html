@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .box{
+            /* 박스너비 */
+            width: 100px;
+            /* 박스 높이 */
+            height: 100px;
+            /* 박스 색상 */
+            background-color: orange;
+            position: absolute;
+            /* 박스 위치 */
+            left: 10px;
+            top: 100px;
+        }
+    </style>
+    <script>
+        // 웹페이지를 불러오면
+        $(document).ready(function(){
+            // box태그를 클릭해서
+            $('.box').click(function(){
+                // 1초 동안 left를 1000px로 변경합니다.
+                $(this).animate({
+                   left:1000 
+                },1000);
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="box">
+
+    </div>    
+</body>
+</html>

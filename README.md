@@ -1,7 +1,358 @@
 #   박민형   [201840212]
 <hr>
 
+## ~~~~~ [ 06월 01일 ] ~~~~~
+
+### 12장 
+
+#### 12.1 구버전 웹브라우저네서 사용이 불가능한 키워드
+##### 12.1.1 let과 const
+ECMAScrpit6에서 최초로 도입된 개념으로 지원을하지않는 구버전에서는 사용이 불가능합니다
+
+|최신버전|구버전|
+|--|--|
+|let a = 10;|var a = 10;|
+|const b = 20;| var b = 20;|
+##### 12.1.2 템플릿 문자열
+
+최신버전에서 문자열을 넣을때에는
+(`변수의 값은 ${변수이름} 입니다.`)
+구버전에서는
+(' 변수의 값은 ' + 변수이름 + '입니다.')
+#### 12.1.3 화살표함수
+ECMAScrpit6에서 최초로 도입된 개념 구버전에서는 사용이 불가합니다 function키워드 사용이 필요합니다
+|최신버전|구버전|
+|--|--|
+|const functionLiteral=()=>{}|const functionLiteral= function(){}|
+
+#### 12.1.4 for of 반복문
+ECMAScrpit6에서 최초로 도입된 개념 for in반복문으로 대체하여야됩니다.
+
+#### 12.1.5 사용불가 메소드 사용코드
+array객체의 foreach(),map() 등등 ECMAScript5에서 추가된 메소드등을 지원하는지 여부확인이 필요하며 불가능할경우 사용이 불가합니다
+
+### 12.2 브라우저 객체 모델
+
+### 12.3 윈도우 객체
+브라우저 크기 조절,시스템에서 작동하는 알림창,프롬프트 출력등을 할수있는 객체입니다
+
+### 12.4 screen 객체
+화면의 너비 높이 색상수 비트수 등을 관리하는 객체
+
+### 12.5 location, history 객체
+location객체는 웹브라우저의 주소와 관련된 객체입니다. 프로토콜의 종류,호스트이름,문서위치등의 정보를 가집니다.
+history 객체는 뒤로가기 앞으로가기와 관련된 객체입니다.
+
+### 12.6 navigator
+navigator객체는 웹페이지를 실행하는 웹브라우저 정보가 담겨있습니다.
+
+## 14장 jQuery
+
+### 14.1장 jQuery 사용준비
+ 공식사이트: http://jquery.com/
+동식웹사이트에서 \<download jQuery> 버튼을 누르면 다운로드 페이지로 이동이가능하다
+jQuery 파일 혹은 cdn 경로를 구할수있다
+* 파일을 이용하는 방법
+\<script src="경로를 입력">\</script>
+* CDN을 이용하는 방법
+예시 구글 3.x버전 cdn
+\<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">\</script>
+
+### 14.2장 jQuery객체
+jquery는 $함수를 사용합니다
+<pre>
+<code>
+    window jQuery = window.$ = jQuery
+</code>
+jQuery 객체생성 방법
+<code>
+//일반 문서 객체로 객체생성 방법
+$(document)
+// CSS선택자로 객체를 생성하는 방법
+$('H1')
+// HTML 선택자로 객체를 생성하는 방법
+$('\<H1>\</H1>')
+</code>
+</pre>
+
+### 14.3장 문장 객체 선택
+<pre>
+//h1 태그를 선택합니다
+<code>
+$('h1')
+</code>
+//h1 태그들중 logo클래스를 지닌 태그를 선택합니다
+<code>
+$('h1.logo')
+</code>
+// id 속성이 head인 태그를 선택합니다.
+<code>
+$('#head')
+</code>
+// input 태그중에 type속성이 submit인 태그를 선택합니다
+<code>
+$('input[type=submit]')
+</code>
+
+//h1 태그의 부모 태그를 선택합니다
+<code>
+$('h1').parent()
+</code>
+// h1 태그 내부에 있는 i태그를 선택합니다
+<code>
+$('h1').find('i')
+</code>
+</pre>
+
+### 14.4장 문서 객체 개별 조작
+
+$() 함수를통해서 여러개의 문서객체를 선택할수있습니다 이러한 문서객체가 몇개가 선택되었는지 알기위해서는 length속성을 사용합니다.
+
+get() 선택한 문서객체중하나를 선택할수있습니다.
+
+each() 선택한 문서객체에 반복을 적용합니다.
+
+Array객체의 forEach()메소드
+[].forEach(function(item,index){
+    반복내용
+});
+jQuery의 each()메소드
+$('h1').each(function(index,item){
+    반복내용
+});
+
+### 14.5장 문서 객체 조작
+
+#### 14.5.1 문자조작
+
+|메소드|설명|
+|--|--|
+|text()|html 태그 내부의 문자를 변경합니다|
+|html()|html 태그 내부의 문자변경(html태그를 인식합니다)|
+
+$('p').text()
+ html안에 있는 모든 p태그의 내용을 가져오게됨
+$('p').html()
+ html안에 있는 첫번째 p태그의 내용을 가져오게됨
+
+ 해당 값을 변경할때에는 ()안에 추가하여 태그내부의 값을 변경할수있습니다.
+
+#### 14.5.2 스타일조작
+
+css() 스타일을 조작할수있습니다.
+<pre>
+//h1 태그의 color 스타일 속성을 가져옵니다
+<code>
+$('h1').css('color')
+</code>
+// h1 태그의 color 스타일 속성을 red로 변경
+<code>
+$('h1').css('color','red')
+</code>
+// h1 태그의 color스타일 속성과 backgroundcolor스타일 속성을 한번에 설정합니다.
+<code>
+$('h1').css({
+    color:'red';
+    backgroundColor:'orange';
+})
+</code>
+</pre>
+
+#### 14.5.3 속성조작
+
+attr() - 속성을 조작합니다.
+<pre>
+//img 태그의 src 속성을 가져옵니다
+<code>
+$('img').attr('src')
+</code>
+// img 태그의 src 속성을 변경
+<code>
+$('img').css('src','http://placehold.it/100x100')
+</code>
+// img 태그의 src속성과 alt 속성을 한번에 설정합니다.
+<code>
+$('img').attr({
+    src:'http://placehold.it/100x100';
+    alt:'placehold.it';
+})
+</code>
+</pre>
+
+### 14.6장 문서 객체 생성
+|메소드|설명|
+|--|--|
+|$(\<A>).prependTo(\<b>)|a를 b안쪽 앞에 추가합니다|
+|$(\<A>).appentTo(\<b>)|a를 b 안쪽 뒤에 추가합니다|
+|$(\<A>).insertBefore(\<b>)|a를 b 앞에 추가합니다|
+|$(\<A>).insertAfter(\<b>)|a를 뒤에 추가합니다|
+
+### 14.7장 이벤트
+|메소드|설명|
+|--|--|
+|on()|이벤트를 연결합니다|
+|off()|이벤트를 제거합니다|
+
+#### 14.7.1 이벤트 직접연결
+<code>
+    $('선택자').on('이벤트 이름','콜백함수')
+</code>
+예시
+<pre>
+<code>
+$('h1').on('click',function (event){
+    var text = $(this).text();
+    alert(text);
+});
+</code>
+</pre>
+
+이벤트 목록
+
+* 키보드이벤트
+
+|메소드|설명|
+|--|--|
+|keydown()|키보드키를 눌렀을때|
+|keypress()|키가 입력되었을때|
+|keyup()|키보드 키를 떼었을때|
+
+* 마우스 이벤트
+
+|메소드|설명|
+|--|--|
+|click()|마우스 클릭할때|
+|dbclick()|마우스 더블클릭됬을때|
+|mousedown()|마우스 버튼을 눌렀을때|
+|mouseenter()|마우스 커서가 해당 태그로 들어올때|
+|mouseleave()|마우스 커서가 해당 태그에서 나갈때|
+|mousemove()|마우스가 움직일때|
+|mouseup()|마우스 버튼을 뗄때|
+* 입력 양식 이벤트
+
+|메소드|설명|
+|--|--|
+|blur()|입력양식에 값 입력을 종료할때|
+|change()|입력양식의 값이 변경될때|
+|focus()|입력양식에 값 입력을 시작할때|
+|select()|type속성이 select인 입력양식의 목록에서 값을 선택할때|
+|submit()|type속성이 submit인 입력양식을 클릭했을때|
+* 웹 브라우저 이벤트
+
+|메소드|설명|
+|--|--|
+|resize()|웹 브라우저의 크기를 변경할때|
+|scroll()|웹브라우저를 스크롤할때|
+
+#### 14.7.1 이벤트 직접연결
+예를 들어 h1태그에 이벤트 를 줄때 h1태그가 아니라 부모태그에게 이벤트를 설정하고 부모태그에서 이벤트가 시작되도록하는 방법이다
+
+<pre>
+<code>
+$('body').on('click','h1',function (event){
+    //h1태그를 body태그에 추가합니다
+    $('<\h1>< /h1>').text($(this).text()).appendTo('body');
+});
+</code>
+</pre>
+
+### 14.7.3 이벤트제거
+이벤트를 제거하려면 off() 사용합니다.
+
+<pre>
+<code>
+//웹페이지를 모두 로드하면
+$('document').ready(function(){
+    var handler = function (event){
+        //h1태그를 body태그에 추가합니다
+        $('<\h1>< /h1>')
+            .text($(this).text())
+            .click(handler)
+            .appendTo('body');
+        // 현재 태그의 이벤트를 제거합니다.
+        $(this).off();
+    }
+    //h1 태그를 클릭하면
+    $('h1').on('click',handler);
+});
+</code>
+</pre>
+
+
+<pre>
+//h1태그의 모든 이벤트를 제거합니다
+<code>
+$('h1').off()
+</code>
+//h1태그의 모든 click 이벤트를 제거합니다
+<code>
+$('h1').off('click')
+</code>
+//h1태그의 모든 click 이벤트로 연결된 콜백함수중에 특정 함수만 제거합니다
+<code>
+$('h1').off('click',handler)
+</code>
+</pre>
+
+one() 이벤트를 한번만 실행하게만듬
+
+### 14.8장 애니메이션
+
+animate() 애니메이션을 적용합니다.
+
+<code>
+$(선택자).animate(속성,시간,콜백함수)
+</code>
+
+<pre>
+<code>
+< !DOCTYPE html>
+< html lang="en">
+< head>
+    < title>Document< /title>
+    < script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">< /script>
+    < style>
+        .box{
+            /* 박스너비 */
+            width: 100px;
+            /* 박스 높이 */
+            height: 100px;
+            /* 박스 색상 */
+            background-color: orange;
+            position: absolute;
+            /* 박스 위치 */
+            left: 10px;
+            top: 100px;
+        }
+    < /style>
+    < script>
+        // 웹페이지를 불러오면
+        $(document).ready(function(){
+            // box태그를 클릭해서
+            $('.box').click(function(){
+                // 1초 동안 left를 1000px로 변경합니다.
+                $(this).animate({
+                   left:1000 
+                },1000);
+            });
+        });
+    < /script>
+< /head>
+< body>
+    < div class="box">
+
+    < /div>    
+< /body>
+< /html>
+</code>
+</pre>
+
+
+## ~~~~~ [ 05월 25일 ] ~~~~~
+
+
 ## ~~~~~ [ 05월 18일 ] ~~~~~
+
 
 ## 9장 node.js 기본
 
